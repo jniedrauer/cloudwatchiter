@@ -1,7 +1,7 @@
 # pylint: disable-all
 
 import pytest
-from cloudwatchiter.expression import AbstractExpression
+from cloudwatchiter.abc_expression import AbstractExpression
 
 def abc(cls):
     cls.__abstractmethods__ = set()

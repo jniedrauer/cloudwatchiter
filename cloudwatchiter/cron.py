@@ -2,7 +2,7 @@
 
 
 from typing import List
-from .expression import AbstractExpression
+from .abc_expression import AbstractExpression
 
 
 class Cron(AbstractExpression):
