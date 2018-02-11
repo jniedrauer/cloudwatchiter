@@ -1,6 +1,7 @@
 """Cloudwatch rate expression"""
 
 from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import List, Tuple
 
 class AbstractExpression(ABC):
@@ -18,6 +19,7 @@ class AbstractExpression(ABC):
         raise NotImplementedError
 
     def __init__(self, expression: str) -> None:
+        self.now = datetime.utcnow()
         __split: List[str] = expression.rstrip(')').split('(')
         self.type: str = self.validate_type(__split[0])
         print(__split[1].split(' '))
