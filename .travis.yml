@@ -5,7 +5,7 @@ python:
   - 3.5
   - 3.6
 install:
-  - pip install -Ur requirements.txt
+  - pip install -Ur requirements_test.txt
 script:
   - __python=$(python3 --version 2>&1 | awk '{print substr($2, 0, 3)}')
   - tox -e "py${pyver//\.}-std"
