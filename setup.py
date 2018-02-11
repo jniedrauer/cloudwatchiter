@@ -15,12 +15,13 @@ def requirements():
             if line.strip() and not line.startswith(('#', '-'))
         ]
 
+def fuse(lst):
+    return ''.join(str(i) for i in lst)
+
 numversion = [0, 0, 1]
 lifecycle = ['dev', 0]
 version = (
-    '.'.join(
-        str(i) for i in numversion + [''.join(str(i) for i in lifecycle)]
-    )
+    '.'.join([str(i) for i in numversion] + [fuse(lifecycle)])
 )
 
 setup(
