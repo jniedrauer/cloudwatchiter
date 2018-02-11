@@ -1,14 +1,16 @@
 """Cron Schedule Expressions"""
 
 
-from typing import List
 from .abc_expression import AbstractExpression
 
 
 class Cron(AbstractExpression):
     """Cloudwatch cron Schedule Expression"""
 
-    element_count = 6
+    element_count: int = 6
+    valid_types: tuple = (
+        'cron',
+    )
 
     def get_next(self, start: int = None, end: int = None):
         """Get next event(s)"""

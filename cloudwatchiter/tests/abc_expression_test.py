@@ -6,6 +6,7 @@ from cloudwatchiter.abc_expression import AbstractExpression
 def abc(cls):
     cls.__abstractmethods__ = set()
     cls.element_count = 2
+    cls.valid_types = ('cron', 'rate')
     return cls
 
 def test_invalid_init():

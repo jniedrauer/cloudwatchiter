@@ -7,6 +7,10 @@ def test_invalid_elements():
     with pytest.raises(ValueError):
         cron = Cron('cron(1 2 3)')
 
+def test_invalid_type():
+    with pytest.raises(ValueError):
+        rate = Cron('date(1 day)')
+
 def test_valid_elements():
     cron = Cron('cron(1 2 3 4 ? *)')
 

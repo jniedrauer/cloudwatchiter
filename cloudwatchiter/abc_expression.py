@@ -2,15 +2,13 @@
 
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import List, Tuple
+from typing import List
 
 class AbstractExpression(ABC):
     """Abstract base class for Cloudwatch expressions"""
 
-    valid_types: Tuple[str, str] = (
-        'cron',
-        'rate',
-    )
+    # mypy has some trouble iterating over properties still
+    valid_types: tuple = tuple()
 
     @property
     @classmethod
@@ -22,10 +20,12 @@ class AbstractExpression(ABC):
         self.now = datetime.utcnow()
         __split: List[str] = expression.rstrip(')').split('(')
         self.type: str = self.validate_type(__split[0])
-        print(__split[1].split(' '))
-        self.elements = self.validate_elements(
-            __split[1].split(' ')
-        )
+        try:
+            self.elements = self.validate_elements(
+                __split[1].split(' ')
+            )
+        except IndexError:
+            raise ValueError('Invalid expression')
 
     @classmethod
     def validate_type(cls, typestr: str) -> str:
