@@ -1,6 +1,8 @@
 """Cron Schedule Expressions"""
 
 
+from datetime import datetime
+from typing import List
 from .abc_expression import AbstractExpression
 
 
@@ -12,11 +14,11 @@ class Cron(AbstractExpression):
         'cron',
     )
 
-    def get_next(self, start: int = None, end: int = None):
+    def get_next(self, count: int = 1, start: int = 1) -> List[datetime]:
         """Get next event(s)"""
         pass
 
-    def get_previous(self, start: int = None, end: int = None):
+    def get_previous(self, count: int = 1, start: int = 1) -> List[datetime]:
         """Get past event(s)"""
         pass
 

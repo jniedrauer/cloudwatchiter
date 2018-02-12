@@ -45,11 +45,11 @@ class AbstractExpression(ABC):
         return elements
 
     @abstractmethod
-    def get_next(self, start: int = None, end: int = None):
+    def get_next(self, count: int = 1, start: int = 1) -> List[datetime]:
         """Get next event(s)"""
         raise NotImplementedError
 
     @abstractmethod
-    def get_previous(self, start: int = None, end: int = None):
+    def get_previous(self, count: int = 1, start: int = 1) -> List[datetime]:
         """Get past event(s)"""
         raise NotImplementedError
